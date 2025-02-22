@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public final static Intake INTAKE_SUBSYSTEM = new Intake();
+  public static Intake INTAKE_SUBSYSTEM;
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController DRIVER_CONTROLLER =
@@ -33,6 +33,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
+    INTAKE_SUBSYSTEM = new Intake();
     configureBindings();
   }
 
@@ -46,9 +47,13 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    DRIVER_CONTROLLER.rightTrigger().onTrue(INTAKE_SUBSYSTEM.forward());
-    DRIVER_CONTROLLER.leftTrigger().onTrue(INTAKE_SUBSYSTEM.backward());
-    DRIVER_CONTROLLER.rightBumper().onTrue(INTAKE_SUBSYSTEM.stop());
+    //DRIVER_CONTROLLER.rightTrigger().onTrue(INTAKE_SUBSYSTEM.forward());
+    //DRIVER_CONTROLLER.leftTrigger().onTrue(INTAKE_SUBSYSTEM.backward());
+    //DRIVER_CONTROLLER.rightBumper().onTrue(INTAKE_SUBSYSTEM.stop());
+    DRIVER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
+    DRIVER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
+    DRIVER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
+    
   }
 
   /**

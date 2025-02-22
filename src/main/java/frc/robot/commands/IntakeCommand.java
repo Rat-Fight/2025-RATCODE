@@ -4,17 +4,16 @@
 
 package frc.robot.commands;
 
-import com.revrobotics.spark.SparkMax;
-
+import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 
 public class IntakeCommand extends Command {
     // Create variables
-    final SparkMax MOTOR;
-    final Timer TIMER;
+    public final static Timer TIMER = new Timer();
     public final boolean FORWARD;
 
     public IntakeCommand() {
@@ -25,11 +24,10 @@ public class IntakeCommand extends Command {
     public IntakeCommand(boolean forward) {
         addRequirements(RobotContainer.INTAKE_SUBSYSTEM); // Require moter subsystem
         // Initalize variables
-        this.MOTOR = RobotContainer.INTAKE_MOTOR;
         this.FORWARD = forward;
         // Initalize Timer
-        TIMER = new Timer();
         TIMER.reset();
+        SmartDashboard.putData((FORWARD ? "Forward": "Backward") + " Intake Command", this);
     }
 
     // Called when the command is initially scheduled.
@@ -44,13 +42,13 @@ public class IntakeCommand extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        MOTOR.set((FORWARD ? 1: -1)/Constants.IntakeConstants.SPEED_DIVIDER); // Set the motor to full speed forward if forward is true or backward if forward is false
+        RobotContainer.INTAKE_MOTOR.set((FORWARD ? 1: -1)/Constants.IntakeConstants.SPEED_DIVIDER); // Set the motor to full speed forward if forward is true or backward if forward is false
     }
 
     // Called once the command ends or is interrupted.
     @Override
     public void end(boolean interrupted) {
-        MOTOR.set(0); // Stop the motor on command end
+        RobotContainer.INTAKE_MOTOR.set(0); // Stop the motor on command end
     }
 
     // Returns true when the command should end.
