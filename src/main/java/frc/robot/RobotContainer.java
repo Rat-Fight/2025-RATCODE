@@ -5,7 +5,8 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -22,18 +23,21 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  public static Intake INTAKE_SUBSYSTEM;
+  public static IntakeSubsystem INTAKE_SUBSYSTEM;
+  public static SparkMax INTAKE_MOTOR = new SparkMax(Constants.IntakeConstants.INTAKE_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
+
+  public static ClimberSubsystem CLIMBER_SUBSYSTEM;
+  public static SparkMax CLIMBER_MOTOR = new SparkMax(Constants.ClimberConstants.CLIMBER_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController DRIVER_CONTROLLER =
-      new CommandXboxController(OperatorConstants.DRIVER_CONTROLLER_PORT);
-
-  public final static SparkMax INTAKE_MOTOR = new SparkMax(Constants.IntakeConstants.INTAKE_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
+  public static CommandXboxController OPERATER_CONTROLLER =
+      new CommandXboxController(OperatorConstants.OPERATER_CONTROLLER_PORT);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    CLIMBER_SUBSYSTEM = new ClimberSubsystem();
+    INTAKE_SUBSYSTEM = new IntakeSubsystem();
     // Configure the trigger bindings
-    INTAKE_SUBSYSTEM = new Intake();
     configureBindings();
   }
 
@@ -50,10 +54,11 @@ public class RobotContainer {
     //DRIVER_CONTROLLER.rightTrigger().onTrue(INTAKE_SUBSYSTEM.forward());
     //DRIVER_CONTROLLER.leftTrigger().onTrue(INTAKE_SUBSYSTEM.backward());
     //DRIVER_CONTROLLER.rightBumper().onTrue(INTAKE_SUBSYSTEM.stop());
-    DRIVER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
-    DRIVER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
-    DRIVER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
+    OPERATER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
+    OPERATER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
+    OPERATER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
     
+    OPERATER_CONTROLLER.getLeftY();
   }
 
   /**

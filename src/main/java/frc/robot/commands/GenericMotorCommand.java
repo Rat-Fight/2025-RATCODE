@@ -21,7 +21,6 @@ public class GenericMotorCommand extends Command {
 
     /** Creates a new Crushing. */
     public GenericMotorCommand(boolean forward, SparkMax motor) {
-        addRequirements(RobotContainer.INTAKE_SUBSYSTEM); // Require moter subsystem
         // Initalize variables
         this.FORWARD = forward;
         this.MOTOR = motor;

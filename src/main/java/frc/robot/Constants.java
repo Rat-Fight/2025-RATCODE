@@ -14,12 +14,17 @@ package frc.robot;
  */
 public final class Constants {
   public static class OperatorConstants {
-    public static final int DRIVER_CONTROLLER_PORT = 0;
+    public static final int OPERATER_CONTROLLER_PORT = 0;
   }
 
   public static class IntakeConstants {
     public static final double MAX_INTAKE_TIME = 10;
     public static final double SPEED_DIVIDER = 5;
     public static final int    INTAKE_ID = 9999;
+  }
+  
+  public static class ClimberConstants {
+    public static final double SPEED_DIVIDER = 5;
+    public static final int    CLIMBER_ID = 9998;
   }
 }

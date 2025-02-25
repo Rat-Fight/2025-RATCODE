@@ -11,11 +11,10 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.IntakeConstants;
-import frc.robot.commands.GenericMotorCommand;
 import frc.robot.commands.IntakeCommand;
 
-public class Intake extends SubsystemBase {
-    public Intake() {
+public class IntakeSubsystem extends SubsystemBase {
+    public IntakeSubsystem() {
         SmartDashboard.putData("Intake Subsystem", this); // Put data on dashboard.
     }
    

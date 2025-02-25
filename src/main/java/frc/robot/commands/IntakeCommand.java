@@ -13,6 +13,7 @@ public class IntakeCommand extends GenericMotorCommand {
     public IntakeCommand(boolean forward) {
         // Initalize motor command
         super(forward, RobotContainer.INTAKE_MOTOR);
+        addRequirements(RobotContainer.INTAKE_SUBSYSTEM); // Require moter subsystem
         // setup timer
         TIMER.reset();
         // Put data on dashboard
