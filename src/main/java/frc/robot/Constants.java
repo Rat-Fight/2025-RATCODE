@@ -17,6 +17,10 @@ public final class Constants {
     public static final int OPERATER_CONTROLLER_PORT = 0;
   }
 
+  public static class DriverConstants {
+    public static final int DRIVER_CONTROLLER_PORT = 1;
+  }
+
   public static class IntakeConstants {
     public static final double MAX_INTAKE_TIME = 10;
     public static final double SPEED_DIVIDER = 5;
@@ -26,5 +30,10 @@ public final class Constants {
   public static class ClimberConstants {
     public static final double SPEED_DIVIDER = 5;
     public static final int    CLIMBER_ID = 9998;
+  }
+
+  public static class ArmConstants {
+    public static final double SPEED_DIVIDER = 5;
+    public static final int    ARM_ID = 9997;
   }
 }

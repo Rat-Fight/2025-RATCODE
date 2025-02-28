@@ -5,6 +5,8 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.Constants.DriverConstants;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 
@@ -27,16 +29,22 @@ public class RobotContainer {
   public static SparkMax INTAKE_MOTOR = new SparkMax(Constants.IntakeConstants.INTAKE_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
 
   public static ClimberSubsystem CLIMBER_SUBSYSTEM;
-  public static SparkMax CLIMBER_MOTOR = new SparkMax(Constants.ClimberConstants.CLIMBER_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
+  public static SparkMax CLIMBER_MOTOR = new SparkMax(Constants.ClimberConstants.CLIMBER_ID, MotorType.kBrushless); // Create Brushless Spark Max for climber.
 
-  // Replace with CommandPS4Controller or CommandJoystick if needed
+  public static ArmSubsystem ARM_SUBSYSTEM;
+  public static SparkMax ARM_MOTOR = new SparkMax(Constants.ArmConstants.ARM_ID, MotorType.kBrushless); // Create Brushless Spark Max for climber.
+  
   public static CommandXboxController OPERATER_CONTROLLER =
       new CommandXboxController(OperatorConstants.OPERATER_CONTROLLER_PORT);
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  public static CommandXboxController DRIVER_CONTROLLER =
+      new CommandXboxController(DriverConstants.DRIVER_CONTROLLER_PORT);
+  
+      /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     CLIMBER_SUBSYSTEM = new ClimberSubsystem();
     INTAKE_SUBSYSTEM = new IntakeSubsystem();
+    ARM_SUBSYSTEM = new ArmSubsystem();
     // Configure the trigger bindings
     configureBindings();
   }
@@ -51,23 +59,14 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-    //DRIVER_CONTROLLER.rightTrigger().onTrue(INTAKE_SUBSYSTEM.forward());
-    //DRIVER_CONTROLLER.leftTrigger().onTrue(INTAKE_SUBSYSTEM.backward());
-    //DRIVER_CONTROLLER.rightBumper().onTrue(INTAKE_SUBSYSTEM.stop());
+    // Intake Controls
     OPERATER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
     OPERATER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
     OPERATER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
+    // Climber controls are left stick y. Control stuff defined in its class
+    // Arm Controls
     
-    OPERATER_CONTROLLER.getLeftY();
-  }
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return null;
+    DRIVER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(ARM_SUBSYSTEM.extend());
+    DRIVER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(ARM_SUBSYSTEM.retract());
   }
 }
