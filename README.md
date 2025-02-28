@@ -5,6 +5,6 @@ The rat fight's code for frc's 2025 reefscape.
 - [ ] Movement
 - [x] [Intake](https://github.com/Rat-Fight/2025-RATCODE/tree/intake)
 - [ ] Arm
-- [ ] Climber
+- [x] [Climber](https://github.com/Rat-Fight/2025-RATCODE/tree/climber)
 - [ ] Auto
 - [ ] Driver Interface
