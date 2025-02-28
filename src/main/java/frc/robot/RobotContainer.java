@@ -66,7 +66,7 @@ public class RobotContainer {
     // Climber controls are left stick y. Control stuff defined in its class
     // Arm Controls
     
-    DRIVER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(ARM_SUBSYSTEM.extend());
-    DRIVER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(ARM_SUBSYSTEM.retract());
+    DRIVER_CONTROLLER.axisGreaterThan(5, 0.9).whileTrue(ARM_SUBSYSTEM.extend());
+    DRIVER_CONTROLLER.axisGreaterThan(2, 0.9).whileTrue(ARM_SUBSYSTEM.retract());
   }
 }
