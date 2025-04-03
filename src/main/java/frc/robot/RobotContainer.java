@@ -19,7 +19,7 @@ import frc.robot.Constants.DriverConstants;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.AutoCommand;
 import frc.robot.generated.TunerConstants;
-//import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.CommandSwerveDrivetrain;
 import frc.robot.subsystems.IntakeSubsystem;
 
@@ -27,8 +27,8 @@ public class RobotContainer {
     public static IntakeSubsystem INTAKE_SUBSYSTEM;
     public static SparkMax INTAKE_MOTOR = new SparkMax(Constants.IntakeConstants.INTAKE_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
 
-    //public static ClimberSubsystem CLIMBER_SUBSYSTEM;
-    //public static SparkMax CLIMBER_MOTOR = new SparkMax(Constants.ClimberConstants.CLIMBER_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
+    public static ClimberSubsystem CLIMBER_SUBSYSTEM;
+    public static SparkMax CLIMBER_MOTOR = new SparkMax(Constants.ClimberConstants.CLIMBER_ID, MotorType.kBrushless); // Create Brushless Spark Max for intake.
 
     // Replace with CommandPS4Controller or CommandJoystick if needed
     public static CommandXboxController OPERATER_CONTROLLER =
@@ -53,7 +53,7 @@ public class RobotContainer {
     public final CommandSwerveDrivetrain drivetrain = TunerConstants.createDrivetrain();
 
     public RobotContainer() {
-//        CLIMBER_SUBSYSTEM = new ClimberSubsystem();
+        CLIMBER_SUBSYSTEM = new ClimberSubsystem();
         INTAKE_SUBSYSTEM = new IntakeSubsystem();
 
         configureBindings();
