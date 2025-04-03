@@ -29,7 +29,7 @@ public class ClimberCommand extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        RobotContainer.CLIMBER_MOTOR.set(RobotContainer.OPERATER_CONTROLLER.getLeftY()/Constants.ClimberConstants.SPEED_DIVIDER);
+        RobotContainer.CLIMBER_MOTOR.set(((double)Math.round(RobotContainer.OPERATER_CONTROLLER.getLeftY()*10)/10)/Constants.ClimberConstants.SPEED_DIVIDER);
     }
 
     // Called once the command ends or is interrupted.

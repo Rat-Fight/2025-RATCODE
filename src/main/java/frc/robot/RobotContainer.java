@@ -88,11 +88,12 @@ public class RobotContainer {
 
         drivetrain.registerTelemetry(logger::telemeterize);
 
-        OPERATER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
-        OPERATER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
-        OPERATER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
-    
-        OPERATER_CONTROLLER.getLeftY();
+        //OPERATER_CONTROLLER.axisGreaterThan(5, 0.9).onTrue(INTAKE_SUBSYSTEM.forward());
+        //OPERATER_CONTROLLER.axisGreaterThan(2, 0.9).onTrue(INTAKE_SUBSYSTEM.backward());
+        //OPERATER_CONTROLLER.button(6).onTrue(INTAKE_SUBSYSTEM.stop());
+        OPERATER_CONTROLLER.rightTrigger().onTrue(INTAKE_SUBSYSTEM.forward());
+        OPERATER_CONTROLLER.leftTrigger().onTrue(INTAKE_SUBSYSTEM.backward());
+        OPERATER_CONTROLLER.rightBumper().onTrue(INTAKE_SUBSYSTEM.stop());
     }
 
     public Command getAutonomousCommand() {
