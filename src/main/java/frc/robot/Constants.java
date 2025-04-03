@@ -23,8 +23,8 @@ public final class Constants {
 
   public static class IntakeConstants {
     public static final double MAX_INTAKE_TIME = 10;
-    public static final double SPEED_DIVIDER = 5;
-    public static final int    INTAKE_ID = 9999;
+    public static final double SPEED_DIVIDER = 20;
+    public static final int    INTAKE_ID = 20;
   }
   
   public static class ClimberConstants {

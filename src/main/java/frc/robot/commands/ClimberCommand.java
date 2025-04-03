@@ -9,37 +9,37 @@
 //     }
 // }
 
-package frc.robot.commands;
+// package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.ClimberSubsystem;
+// import edu.wpi.first.wpilibj2.command.Command;
+// import frc.robot.Constants;
+// import frc.robot.RobotContainer;
+// import frc.robot.subsystems.ClimberSubsystem;
 
-public class ClimberCommand extends Command {
-    /** Creates a new Crushing. */
-    public ClimberCommand(ClimberSubsystem parent) {
-        addRequirements(parent);
-    }
+// public class ClimberCommand extends Command {
+//     /** Creates a new Crushing. */
+//     public ClimberCommand(ClimberSubsystem parent) {
+//         addRequirements(parent);
+//     }
 
-    // Called when the command is initially scheduled.
-    @Override
-    public void initialize() {}
+//     // Called when the command is initially scheduled.
+//     @Override
+//     public void initialize() {}
 
-    // Called every time the scheduler runs while the command is scheduled.
-    @Override
-    public void execute() {
-        RobotContainer.CLIMBER_MOTOR.set(((double)Math.round(RobotContainer.OPERATER_CONTROLLER.getLeftY()*10)/10)/Constants.ClimberConstants.SPEED_DIVIDER);
-    }
+//     // Called every time the scheduler runs while the command is scheduled.
+//     @Override
+//     public void execute() {
+//         RobotContainer.CLIMBER_MOTOR.set(((double)Math.round(RobotContainer.OPERATER_CONTROLLER.getLeftY()*10)/10)/Constants.ClimberConstants.SPEED_DIVIDER);
+//     }
 
-    // Called once the command ends or is interrupted.
-    @Override
-    public void end(boolean interrupted) {
-        RobotContainer.CLIMBER_MOTOR.set(0); // Stop the motor on command end
-    }
+//     // Called once the command ends or is interrupted.
+//     @Override
+//     public void end(boolean interrupted) {
+//         RobotContainer.CLIMBER_MOTOR.set(0); // Stop the motor on command end
+//     }
 
-    @Override
-    public boolean isFinished() {
-        return false;
-    }
-}
+//     @Override
+//     public boolean isFinished() {
+//         return false;
+//     }
+// }
