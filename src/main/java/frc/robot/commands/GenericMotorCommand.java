@@ -36,7 +36,7 @@ public class GenericMotorCommand extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        MOTOR.set((FORWARD ? 1: -1)/Constants.IntakeConstants.SPEED_DIVIDER); // Set the motor to full speed forward if forward is true or backward if forward is false
+        MOTOR.set((FORWARD ? 1: -1)*Constants.IntakeConstants.SPEED); // Set the motor to full speed forward if forward is true or backward if forward is false
     }
 
     // Called once the command ends or is interrupted.

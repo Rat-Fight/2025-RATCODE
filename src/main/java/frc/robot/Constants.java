@@ -23,7 +23,7 @@ public final class Constants {
 
   public static class IntakeConstants {
     public static final double MAX_INTAKE_TIME = 10;
-    public static final double SPEED_DIVIDER = 100/8;
+    public static final double SPEED = 0.30;
     public static final int    INTAKE_ID = 20;
   }
   
