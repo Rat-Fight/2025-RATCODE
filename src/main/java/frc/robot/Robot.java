@@ -4,12 +4,15 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.*;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.Constants.AutoConstants;
+import frc.robot.generated.TunerConstants;
 
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
 
   private final RobotContainer m_robotContainer;
 
@@ -32,26 +35,22 @@ public class Robot extends TimedRobot {
   public void disabledExit() {}
 
   @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+  public void autonomousInit() {}
 
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.schedule();
-    }
-  }
-
+  private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
+  
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    m_robotContainer.drivetrain.setControl(
+      m_robotContainer.drive.withVelocityX(-AutoConstants.MOVE_SPEED * MaxSpeed)
+    );
+  }
 
   @Override
   public void autonomousExit() {}
 
   @Override
-  public void teleopInit() {
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
-  }
+  public void teleopInit() {}
 
   @Override
   public void teleopPeriodic() {}
