@@ -1,7 +1,5 @@
 package frc.robot.commands;
 
-import com.revrobotics.spark.SparkMax;
-
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Constants;
