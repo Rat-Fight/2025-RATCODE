@@ -28,6 +28,7 @@ public class IntakeCommand extends GenericMotorCommand {
     // Returns true when the command should end.
     @Override
     public boolean isFinished() {
-        return (TIMER.get() > Constants.IntakeConstants.MAX_INTAKE_TIME); // Stop after CRUSHING_TIME
+        //return (TIMER.get() > Constants.IntakeConstants.MAX_INTAKE_TIME); // Stop after CRUSHING_TIME
+        return false;
     }
 }
