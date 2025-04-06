@@ -35,22 +35,28 @@ public class Robot extends TimedRobot {
   public void disabledExit() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    m_robotContainer.drivetrain.setDefaultCommand(
+            // Drivetrain will execute this command periodically
+            m_robotContainer.drivetrain.applyRequest(() -> 
+                m_robotContainer.drive.withVelocityX(-AutoConstants.MOVE_SPEED * MaxSpeed) // Drive forward with negative Y (forward)
+            )
+        );
+  }
 
   private double MaxSpeed = TunerConstants.kSpeedAt12Volts.in(MetersPerSecond); // kSpeedAt12Volts desired top speed
   
   @Override
   public void autonomousPeriodic() {
-    m_robotContainer.drivetrain.setControl(
-      m_robotContainer.drive.withVelocityX(-AutoConstants.MOVE_SPEED * MaxSpeed)
-    );
   }
 
   @Override
   public void autonomousExit() {}
 
   @Override
-  public void teleopInit() {}
+  public void teleopInit() {
+    m_robotContainer.configureBindings();
+  }
 
   @Override
   public void teleopPeriodic() {}
