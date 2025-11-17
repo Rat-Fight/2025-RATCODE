@@ -65,3 +65,15 @@ You’ll need:
    ```bash
    git clone https://github.com/Rat-Fight/2025-RATCODE.git
    cd 2025-RATCODE
+
+---
+
+## Team Git Workflow and Cloud Setup
+
+We use a clear Git workflow to keep code organized and prevent breakage.
+This includes rules for branches, pull requests, reviews, and cloud storage for CAD, scouting data, and media.
+
+Read the full guide here:
+
+➡️[Team Git and Cloud Architecture Guide](https://docs.google.com/document/d/1HDNtYOIjr54b3dIM6_k4n5Up1ehRn_GQ_wL3sQ6srAY/edit?tab=t.0)
+
